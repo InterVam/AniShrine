@@ -4,6 +4,8 @@ export const Div = styled.nav`
     height:100vh;
     width:100vw;
     display:grid;
+    background-size: cover ;
+    background-image: url("https://wallpaper.dog/large/5462979.jpg");
     place-items: center;
 `
 export const Form = styled.form`
@@ -18,6 +20,9 @@ place-items:center;
 backdrop-filter:blur(8.5px) ;
 box-shadow: 0 8px 32px (31,38,135,0.37);
 letter-spacing:0.4rem;
+@media (max-width: 768px){
+    width:90vw;
+  }
 `
 
 export const LinkStart = styled.h1`
@@ -48,6 +53,9 @@ height:1vh;
     color : #000000;
     font-size: 1.5vh;
 }
+@media (max-width: 768px){
+    width:70vw;
+  }
 `
 
 export const Button = styled.button`
@@ -61,9 +69,12 @@ border: 0;
 text-align:center;
 font-size:2vh;
 color:#ffffff;
-background: #256ce1;
+background: #DE6060;
 &:hover {
     transition: all 0.2s ease-in-out;
     background: #fff;
     color: #010606;}
+ @media (max-width: 768px){
+    width:40vw;
+  }
 `
