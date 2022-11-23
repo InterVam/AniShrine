@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import{BrowserRouter as Router , Route , Switch} from 'react-router-dom'
+import{BrowserRouter as Router , Route , Switch,Redirect} from 'react-router-dom'
 import './App.css';
 import Home from './Components/Home/Home';
 import Navbar from './Components/Navbar/Navbar';
@@ -14,6 +14,9 @@ class App extends Component {
     <div className="App">
     <Navbar></Navbar>
     <Switch>
+    <Route exact path="/">
+    <Redirect to="/home" />
+    </Route>
       <Route path="/signin">
         <Signin></Signin>
       </Route>
