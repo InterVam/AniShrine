@@ -78,3 +78,8 @@ background: #DE6060;
     width:40vw;
   }
 `
+
+export const Err = styled.p`
+color:red;
+
+`
