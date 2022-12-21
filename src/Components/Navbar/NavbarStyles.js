@@ -11,6 +11,7 @@ export const Nav = styled.div`
   @media (max-width: 768px){
     justify-content: space-between;
     height:${props => (props.state ? "100vh" : "50%")};
+    transition: max-height 0.15s ease-out;
     flex-direction: column;
    
   }

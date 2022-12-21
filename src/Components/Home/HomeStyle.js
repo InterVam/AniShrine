@@ -4,6 +4,7 @@ export const Page = styled(motion.main)`
   height:100vh;
   position: relative;
   overflow: auto;
+  
   @media (max-width: 768px){
     border: none;
   overflow: auto;
@@ -11,7 +12,6 @@ export const Page = styled(motion.main)`
 `
 export const Img = styled.img`
 height:70vh;
-
 flex-grow: 1;
 object-fit:contain;
 width:70vw;

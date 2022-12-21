@@ -9,9 +9,15 @@ const SignIn = () => {
         },
         validationSchema: Yup.object({
             email: Yup.string()
-                .required('Required!'),
+                .required('Required!')
+                .email('enter valid email')
+                ,
             password: Yup.string()
                 .required('Required!')
+                .matches(
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+                    "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+                  ),
         }),
         onSubmit: () => {
 
@@ -43,7 +49,7 @@ const SignIn = () => {
                         onChange={formik.handleChange}
                     />
                     {formik.errors.password && formik.touched.password ? <Err className="errorMsg">{formik.errors.password}</Err> : null}
-            <Button>Sign In</Button>
+            <Button type="submit">Sign In</Button>
         </Form>
     </Div> );
 }

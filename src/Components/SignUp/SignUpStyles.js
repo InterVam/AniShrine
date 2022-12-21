@@ -7,10 +7,11 @@ export const Div = styled.nav`
     background-size: cover ;
     background-image: url("https://wallpaper.dog/large/5462979.jpg");
     place-items: center;
+    overflow: auto;
 `
 export const Form = styled.form`
-height:50vh;
-width:30vw;
+height:auto;
+width:auto;
 flex-direction: column;
 border-radius: 3ch;
 background: rgba(255,255,255,0.15);
@@ -29,13 +30,16 @@ export const LinkStart = styled.h1`
 margin : 2rem  0 2rem 0;
 text-align:center;
 color: #ffffff;
+@media (max-width: 768px){
+    font-size:20px;
+  }
 `
 
 export const Input = styled.input`
 background-color:rgba(255,255,255,0.15);
 width:20vw;
 height:1vh;
-/* margin-top: 1rem; */
+margin:2rem;
 padding:1rem;
 border:0;
 outline:none;
@@ -44,10 +48,10 @@ border-radius: 5ch;
     display:inline-block;
     box-shadow: 0 0 0 0.1rem #b9abbe;
     backdrop-filter: blur(12rem);
-    border-radius: 2rem;
+    border-radius: 5ch;
     border:0px;
     width:20vw;
-height:1vh;
+    height:1vh;
 }
 &::placeholder{
     color : #000000;
@@ -55,6 +59,10 @@ height:1vh;
 }
 @media (max-width: 768px){
     width:70vw;
+    &:focus{
+      width:70vw;
+    }
+    
   }
 `
 
@@ -63,7 +71,7 @@ export const Button = styled.button`
 width:10vw;
 height:7vh;
 
-/* margin-top: 3rem; */
+margin-bottom: 2rem;
 border-radius: 1rem;
 border: 0;
 text-align:center;
