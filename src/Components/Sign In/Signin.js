@@ -35,7 +35,8 @@ const SignIn = () => {
                     uid: user.uid,
                     name: auth.currentUser.displayName,
                     photoURL: auth.currentUser.photoURL,
-                    loggedIn: true,})
+                    loggedIn: true,
+                    anime:[""]})
                 history.push("/home"); // New line
 
               })

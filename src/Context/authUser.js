@@ -6,6 +6,7 @@ export const AuthenticatedUserProvider = (props) => {
     name: "Guest",
     photoURL:"hey",
     loggedIn: false,
+    anime:[""]
   });
   const [isAuthenticated, setIsAuthenticated] = React.useState(false); 
   const logOutUser = async () => {
@@ -16,6 +17,7 @@ export const AuthenticatedUserProvider = (props) => {
         name: "Guest",
         photoURL:"hey",
         loggedIn: false,
+        anime:[""]
       });
     } catch (err) {
       console.log(`something happened when logging user out`, err);

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { HeartSwitch } from '@anatoliygatt/heart-switch';
 
 export const Prod = styled.div`
 height: auto;
@@ -7,6 +6,7 @@ width: 15vw;
 margin: auto;
 border: 5px solid #000;
 display: flex;
+padding-top:10px;
 flex-direction: column;
 align-items: center;
 @media screen and (max-width: 768px) {
@@ -15,21 +15,11 @@ align-items: center;
   }
 
 `
-export const Check = styled(HeartSwitch)`
 
 
-`
-export const Heart = styled.label`
-align-self: flex-start;
-position:absolute;
-height: 30px;
-width: 30px;
-margin-left:1%;
-margin-top:1%;
-margin-bottom: 20%;
-`
+
 export const Data = styled.text`
-font-size: 200%;
+font-size: 50%;
 align-self: center;
 justify-content: center;
 text-align:center;

@@ -6,10 +6,13 @@ import { createUserWithEmailAndPassword  , updateProfile } from "firebase/auth";
 import {auth} from "../../Configs/firebaseConf"
 import { AuthenticatedUser } from "../../Context/authUser";
 import { useContext } from "react";
-import userpic from "./userpic.png"
+import {  doc, setDoc } from "firebase/firestore";
+import {app} from "../../Configs/firebaseConf";
+import { getFirestore } from "firebase/firestore";
 const SignUp = () => {
     const { setUser } = useContext(AuthenticatedUser);
     const history = useHistory();
+    const db = getFirestore(app);
     const formik = useFormik({
         initialValues: {
             username:"",
@@ -39,14 +42,24 @@ const SignUp = () => {
             uid: user.uid,
             name: formik.values.username,
             photoURL: "https://media.discordapp.net/attachments/646090028170346537/1061781171622662205/pngwing.com_1.png",
-            loggedIn: true,})
+            loggedIn: true,
+        anime:[""]})
             updateProfile(auth.currentUser, {
              displayName: formik.values.username,
              photoURL: "https://media.discordapp.net/attachments/646090028170346537/1061781171622662205/pngwing.com_1.png"
            }).then(()=>{
              console.log(auth.currentUser.displayName);
              history.push("/home"); // New line
-            
+               const docwork = doc(db, "users",user.uid)
+               
+             try  {
+                const docRef = setDoc(docwork, {
+                 data:"0"
+                });
+                console.log("Document written with ID: ", docRef.id);
+              } catch (e) {
+                console.error("Error adding document: ", e);
+              }
            })
          })
          .catch((error) => {

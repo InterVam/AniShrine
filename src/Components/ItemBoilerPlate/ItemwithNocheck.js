@@ -1,23 +1,15 @@
 import React from "react";
-import { Check, Data, Prod ,Image,Randdiv } from "./ItemStyle";
+import { Check, Data, Prod ,Image,Randdiv } from "./ItemwithNocheckStyles";
 import HeartCheckbox from 'react-heart-checkbox';
 import { AuthenticatedUser } from "../../Context/authUser";
 import { useContext , useState} from "react";
-const Item = ({product,onSelectProduct}) => {
+const Item2 = ({product}) => {
     const {images,mal_id,title}=product
     const { user ,setUser ,logOutUser} = useContext(AuthenticatedUser);
-
+    console.log(product)
     return ( 
     <Prod key={mal_id}>
-        <Randdiv>    
-        <Check type="checkbox"
-         id="heart"
-         size="md"
-         value={mal_id}
-        onChange={(e)=>{const value = e.target.value;
-                 onSelectProduct(value)}}
-         ></Check>
-        </Randdiv>
+       
         {/* {product.mal_id?<Data>{product.mal_id}</Data>:<Data>Error</Data>} */}
         {images?<Image src={images.jpg.large_image_url}></Image>:<Data>Error</Data>}
        
@@ -27,4 +19,4 @@ const Item = ({product,onSelectProduct}) => {
        
     </Prod> );
 }
-export default Item;
+export default Item2;

@@ -1,11 +1,18 @@
 import styled from 'styled-components'
 
 export const Page = styled.div`
- height:100vh;
+    height:100vh;
     width:100vw;
     display:grid;
     grid-template-columns: 1fr 5fr;
     grid-template-rows: 1fr 4fr;
+    @media (max-width: 768px){
+  grid-template-columns: 1fr;
+  grid-template-rows: 5fr 5fr 2fr 5fr;
+  border: none; 
+  height:100vh;
+    width:100vw;
+  } 
 `
 
 export const Userimg =  styled.img`
@@ -17,7 +24,11 @@ border-radius: 5555px;
 background-color: rgba(255,255,255,0.15);
 padding:10px;
 margin: 30px;
-
+@media (max-width: 768px){
+    width:50vw;
+    padding:30px;
+    margin-top: 10px;
+  } 
 `
 
 export const Hellouser = styled.div`
@@ -28,7 +39,12 @@ padding-left:3rem;
 display:flex;
 align-items: center;
 border: 1px solid #FFFFFF;
-
+@media (max-width: 768px){
+    padding-left:0rem;
+    font-size:25px;
+    justify-content: center;
+    height:100%;
+  } 
 `
 export const Anifav = styled.div`
 color:#FFFFFF;
