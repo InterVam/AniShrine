@@ -3,7 +3,7 @@ import {motion} from "framer-motion"
 export const Page = styled(motion.main)`
   height:100vh;
   position: relative;
-  overflow: auto;
+  overflow: hidden;
   
   @media (max-width: 768px){
     border: none;

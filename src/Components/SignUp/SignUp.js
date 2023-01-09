@@ -1,7 +1,15 @@
 import { Button, Div, Form, Input, LinkStart ,Err} from "./SignUpStyles";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useHistory } from "react-router-dom";
+import { createUserWithEmailAndPassword  , updateProfile } from "firebase/auth";
+import {auth} from "../../Configs/firebaseConf"
+import { AuthenticatedUser } from "../../Context/authUser";
+import { useContext } from "react";
+import userpic from "./userpic.png"
 const SignUp = () => {
+    const { setUser } = useContext(AuthenticatedUser);
+    const history = useHistory();
     const formik = useFormik({
         initialValues: {
             username:"",
@@ -17,14 +25,37 @@ const SignUp = () => {
             password: Yup.string()
                 .required('Required!')
                 .matches(
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
                     "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
                   ),
             
         }),
-        onSubmit: () => {
-
-            console.log("okay")
+        onSubmit: async () => {
+         createUserWithEmailAndPassword(auth, formik.values.email , formik.values.password)
+         .then((userCredential) => {
+            console.log("hey")
+           const user = userCredential.user;
+           setUser({ 
+            uid: user.uid,
+            name: formik.values.username,
+            photoURL: "https://media.discordapp.net/attachments/646090028170346537/1061781171622662205/pngwing.com_1.png",
+            loggedIn: true,})
+            updateProfile(auth.currentUser, {
+             displayName: formik.values.username,
+             photoURL: "https://media.discordapp.net/attachments/646090028170346537/1061781171622662205/pngwing.com_1.png"
+           }).then(()=>{
+             console.log(auth.currentUser.displayName);
+             history.push("/home"); // New line
+            
+           })
+         })
+         .catch((error) => {
+           const errorCode = error.code;
+           const errorMessage = error.message;
+           // ..
+           console.log(errorMessage)
+         });
+         console.log(formik.values.password)
         }
     });
 

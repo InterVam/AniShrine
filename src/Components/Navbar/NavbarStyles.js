@@ -44,7 +44,8 @@ export const NavLink = styled(Link)`
 export const Logo = styled.img`
   display: flex;
   height: 50px;
-  
+  object-fit:contain;
+
   
 `;
 export const NavMenu = styled.div`
@@ -73,6 +74,25 @@ export const NavBtn = styled.nav`
 `;
 export const NavBtnLink = styled(Link)`
   border-radius: 7px;
+  background: #DE6060;
+  padding: 7px 15px;
+  color: #fff;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  /* Second Nav */
+  margin-left: 5px;
+  margin-right : 5px;
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #fff;
+    color: #010606;
+  }
+`;
+export const UserNavBtnLink = styled(Link)`
+  border-radius: 100px;
   background: #DE6060;
   padding: 7px 15px;
   color: #fff;

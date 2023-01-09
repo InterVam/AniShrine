@@ -1,7 +1,14 @@
 import { Button, Div, Form, Input, LinkStart,Err } from "./SignInStyles";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { signInWithEmailAndPassword  } from "firebase/auth";
+import {auth} from "../../Configs/firebaseConf"
+import { AuthenticatedUser } from "../../Context/authUser";
+import { useContext } from "react";
+import { useHistory } from "react-router-dom";
 const SignIn = () => {
+    const { setUser } = useContext(AuthenticatedUser);
+    const history = useHistory();
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -21,7 +28,24 @@ const SignIn = () => {
         }),
         onSubmit: () => {
 
-            console.log("okay")
+            signInWithEmailAndPassword(auth, formik.values.email , formik.values.password) 
+            .then((userCredential) => {
+                const user = userCredential.user;
+                setUser({ 
+                    uid: user.uid,
+                    name: auth.currentUser.displayName,
+                    photoURL: auth.currentUser.photoURL,
+                    loggedIn: true,})
+                history.push("/home"); // New line
+
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage)
+              });
+
+              console.log(formik.values.password)
         }
     });
     return ( <Div>
